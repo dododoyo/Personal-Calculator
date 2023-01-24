@@ -4,7 +4,7 @@ This is a basic calculator program I have written in Java. It can perform additi
 
 ## Getting Started
 
-To run the program, you will need to have the Java Development Kit (JDK) installed on your computer. Once the JDK is installed, you can compile and run the program using the following commands in the terminal:
+To run the program, you will need to have the Java Development Kit (JDK) installed on your computer. Once the JDK is installed,make sure you are in the  src folder, then you can compile and run the program using the following commands in the terminal:
 
 * javac Calculator.java
 * java Calculator
@@ -21,7 +21,7 @@ You must do this in this exact manner any diviation from the given instruction m
 
 ## Built With
 
-* Programming language used - [Java](https://www.java.com/en/) 
+* [**Java**](https://www.java.com/en/) 
 
 ## Author
 
