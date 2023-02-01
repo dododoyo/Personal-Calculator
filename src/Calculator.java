@@ -3,6 +3,7 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,6 +15,9 @@ public class Calculator extends JFrame
     //variables to store the numbers ditacted
     private double firstNumber;
     private double secondNumber;
+
+    //string variables to store numbers ditacted
+    private String firstNum="";
 
     //variable to store the result of our calculation
     private double result=0;
@@ -49,6 +53,13 @@ public class Calculator extends JFrame
 
     //Label field for the output
     private JLabel fieldForOutput;
+
+    public static void main(String[] args)
+    {
+        // We don't plan to make any changes to our calculator so we can just make anonymous object of calculator
+        new Calculator();
+        
+    }
 
     
 
@@ -156,70 +167,101 @@ public class Calculator extends JFrame
         {
             // If the 'C' button is clicked (which stands for clear) the whole output panel is cleared
             if(e.getSource() == buttonForClear)
-            fieldForOutput.setText("");
+            {
+                firstNum = "";
+                fieldForOutput.setText(firstNum);
+
+            }
 
             // If the buttons for the numbers are clicked respective value will be recorded on the output panel
             if(e.getSource() == buttonOfZero)  
-            fieldForOutput.setText(fieldForOutput.getText().concat("0"));  
-
-            if(e.getSource() == buttonOfOne)
-            fieldForOutput.setText(fieldForOutput.getText().concat("1"));  
-
+            {
+                firstNum = firstNum.concat("0");
+                fieldForOutput.setText(firstNum);
+            }  
+            if(e.getSource() == buttonOfOne)  
+            {
+                firstNum = firstNum.concat("1");
+                fieldForOutput.setText(firstNum);
+            }  
             if(e.getSource() == buttonOfTwo)  
-            fieldForOutput.setText(fieldForOutput.getText().concat("2"));  
-
-            if(e.getSource() == buttonOfThree) 
-            fieldForOutput.setText(fieldForOutput.getText().concat("3"));  
-
+            {
+                firstNum = firstNum.concat("2");
+                fieldForOutput.setText(firstNum);
+            }  
+            if(e.getSource() == buttonOfThree)  
+            {
+                firstNum = firstNum.concat("3");
+                fieldForOutput.setText(firstNum);
+            }  
             if(e.getSource() == buttonOfFour)  
-            fieldForOutput.setText(fieldForOutput.getText().concat("4"));  
-
-            if(e.getSource() == buttonOfFive) 
-            fieldForOutput.setText(fieldForOutput.getText().concat("5"));  
-
-            if(e.getSource() == buttonOfSix) 
-            fieldForOutput.setText(fieldForOutput.getText().concat("6")); 
-
+            {
+                firstNum = firstNum.concat("4");
+                fieldForOutput.setText(firstNum);
+            }  
+            if(e.getSource() == buttonOfFive)  
+            {
+                firstNum = firstNum.concat("5");
+                fieldForOutput.setText(firstNum);
+            }  
+            if(e.getSource() == buttonOfSix)  
+            {
+                firstNum = firstNum.concat("6");
+                fieldForOutput.setText(firstNum);
+            }  
             if(e.getSource() == buttonOfSeven)  
-            fieldForOutput.setText(fieldForOutput.getText().concat("7"));  
-
+            {
+                firstNum = firstNum.concat("7");
+                fieldForOutput.setText(firstNum);
+            }  
             if(e.getSource() == buttonOfEight)  
-            fieldForOutput.setText(fieldForOutput.getText().concat("8")); 
-            
+            {
+                firstNum = firstNum.concat("8");
+                fieldForOutput.setText(firstNum);
+            }  
             if(e.getSource() == buttonOfNine)  
-            fieldForOutput.setText(fieldForOutput.getText().concat("9"));  
-
-            if(e.getSource() == buttonOfPoint)
-            fieldForOutput.setText(fieldForOutput.getText().concat(".")); 
+            {
+                firstNum = firstNum.concat("9");
+                fieldForOutput.setText(firstNum);
+            }  
+            if(e.getSource() == buttonOfPoint)  
+            {
+                if(!firstNum.contains("."))
+                {
+                    firstNum = firstNum.concat(".");
+                    fieldForOutput.setText(firstNum);
+                }
+            }  
+ 
 
 
             // If one of the operation's button is clicked, the whole text before click of operation will be recorded
-            // and the input field will be set to empty string so the next number could be recored
+            // and the input field will be set to empty string so the next number could be recored.
             if(e.getSource() == buttonOfAddition)
             {
-                firstNumber = Double.parseDouble(fieldForOutput.getText());
-                fieldForOutput.setText("");
+                firstNumber = Double.parseDouble(firstNum);
+                firstNum = "";
                 operation = '+';
             }
 
             if(e.getSource() == buttonOfSubtraction)
             {
-                firstNumber = Double.parseDouble(fieldForOutput.getText());
-                fieldForOutput.setText("");
+                firstNumber = Double.parseDouble(firstNum);
+                firstNum = "";
                 operation = '-';
             }
 
             if(e.getSource() == buttonOfDivision)
             {
-                firstNumber = Double.parseDouble(fieldForOutput.getText());
-                fieldForOutput.setText("");
+                firstNumber = Double.parseDouble(firstNum);
+                firstNum = "";
                 operation = '/';
             }
 
             if(e.getSource() == buttonOfMultiplication)
             {
-                firstNumber = Double.parseDouble(fieldForOutput.getText());
-                fieldForOutput.setText("");
+                firstNumber = Double.parseDouble(firstNum);
+                firstNum = "";
                 operation = '*';
             }
 
@@ -228,7 +270,7 @@ public class Calculator extends JFrame
             // and the result will be displayed with respect to operation recorded
             if(e.getSource()== buttonToShowSolution)
             {
-                secondNumber = Double.parseDouble(fieldForOutput.getText());
+                secondNumber = Double.parseDouble(firstNum);
 
                 if(operation == '+')
                 result = firstNumber+secondNumber;
@@ -240,14 +282,11 @@ public class Calculator extends JFrame
                 result = firstNumber*secondNumber;
 
                 fieldForOutput.setText(""+result);
+                firstNum = "";
+
             }
             
         }
     }
-   public static void main(String[] args)
-   {
-    // We don't plan to make any changes to our calculator so we can just make anonymous object of calculator
-    new Calculator();
-    
-   }
+   
 }
